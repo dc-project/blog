@@ -1,0 +1,37 @@
+# Byte-compoled
+__pycache__/
+app/__pycache__/*
+*.pyc
+*.py[cod]
+
+# C extensions
+*.so
+
+# Python
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+lib/
+libs/
+var/
+*.egg-info/
+*.egg
+.installed.cfg
+.idea/
+.mainfest
+*.spec
+pip-log.txt
+.cache
+.coverage
+*.log
+
+.DS_Store
+*.db
+.*.swp
+*.cson
+target/
+.blog_secret_key
+
