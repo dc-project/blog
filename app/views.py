@@ -66,7 +66,7 @@ def setup():
             with app.app_context():
                 cache.clear()
             return redirect(url_for('views.static_html'))
-        return render_template('setup.html',wslove=session.get('wslove'))
+        return render_template('install/setup.html',wslove=session.get('wslove'))
     return redirect(url_for('views.static_html'))
 
 
@@ -77,8 +77,8 @@ def static_html(template):
         if template=='home':
             posts_list=get_list()
             #print(posts_list)
-            user = Users.query.filter_by(id=1).first_or_404()
-            return render_template('%s.html' % template, posts_list=posts_list,user=user)
+            #user = Users.query.filter_by(id=1).first_or_404()
+            return render_template('home/%s.html' % template, posts_list=posts_list)
         return render_template('%s.html' % template)
     except TemplateNotFound:
         """

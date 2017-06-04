@@ -11,7 +11,7 @@ Personal blog engine written on Flask.
 
 #### Docker
 
-Install Docker [中国大陆安装方式](https://download.daocloud.io/Docker_Mirror/Docker/17.03.1-ce) 
+Install Docker [pre-install-docker.sh](./pre-install-docker.sh) 
 
   `docker pull ysicing/blog`
 
@@ -20,4 +20,4 @@ Install Docker [中国大陆安装方式](https://download.daocloud.io/Docker_Mi
 [https://notes.ysicing.net](https://notes.ysicing.net)
 
 ## Version
-0.0.1
+0.1
