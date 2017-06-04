@@ -1,0 +1,327 @@
+{% extends "admin/monitor/jk_base.html" %}
+{% block content %}
+
+    {{ super() }}
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class=""><a data-toggle="tab" href="#disk">Disk</a> </li>
+                        <li class=""><a data-toggle="tab" href="#network">Network</a> </li>
+                        <li class=""><a data-toggle="tab" href="#swap">Swap</a> </li>
+                        <li class="active"><a data-toggle="tab" href="#cpu">Cpu</a> </li>
+                        <li class=""><a data-toggle="tab" href="#memory">Memory</a> </li>
+                        <li class=""><a data-toggle="tab" href="#user">User</a> </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="cpu" class="tab-pane active">
+                            <div class="panel-body">
+                                        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-warning pull-right">Data has changed</span>
+                        <h5>Cpu</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <br />
+                                <strong>
+                                    Load average
+                                </strong>
+                            </div>
+                            <div class="col-xs-3">
+                                <small class="stats-label">1 min</small>
+                                <h4>{{ load_avg[0]|round(2) }}</h4>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <small class="stats-label">5 mins</small>
+                                <h4>{{ load_avg[1]|round(2) }}</h4>
+                            </div>
+                            <div class="col-xs-3">
+                                <small class="stats-label">15 mins</small>
+                                <h4> {{ load_avg[2]|round(2) }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <br />
+                                <strong>
+                                    Cpu
+                                </strong>
+                            </div>
+                            <div class="col-xs-3">
+                                <small class="stats-label">User</small>
+                                <h4>{{ cpu.user }} %</h4>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <small class="stats-label">System</small>
+                                <h4>{{ cpu.system }} %</h4>
+                            </div>
+                            <div class="col-xs-3">
+                                <small class="stats-label">Idle</small>
+                                <h4>{{ cpu.idle }} %</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <small class="stats-label">Cores</small>
+                                <h4>{{ num_cpus }}</h4>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <small class="stats-label">I/O wait</small>
+                                <h4>{{ cpu.iowait }}0.0 %</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div></div>
+        </div>
+                            </div>
+                        </div>
+                        <div id="memory" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <span class="label label-warning pull-right">Data has changed</span>
+                                                <h5>Memory</h5>
+                                            </div>
+                                            <div class="ibox-content">
+                                                <div class="row">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="label-col">Total</td>
+                                                                <td class="total">{{ memory.total|filesizeformat }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="label-col">Available</td>
+                                                                <td class="available">{{ memory.available|filesizeformat }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="label-col">Used <small>(excl. cache &amp; buffers)</small></td>
+                                                                <td class="used_excl">{{ (memory.total - memory.available)|filesizeformat }} ({{ memory.percent }} %)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="label-col">Used <small>(incl. cache &amp; buffers)</small></td>
+                                                                <td class="used_incl">{{ memory.used|filesizeformat }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="label-col">Free</td>
+                                                                <td class="free">{{ memory.free|filesizeformat }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="disk" class="tab-pane">
+                            <div class="panel-body">
+                                 <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <span class="label label-warning pull-right">Data has changed</span>
+                                                <h5>Disk</h5>
+                                            </div>
+                                            <div class="ibox-content">
+                                                <div class="row">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Device</th>
+                                                                <th>Mounted</th>
+                                                                <th>Total</th>
+                                                                <th>Used</th>
+                                                                <th>Free</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for d in disks %}
+                                                                <tr>
+                                                                    <td>{{ d.device }}</td>
+                                                                    <td>{{ d.mountpoint }}</td>
+                                                                    <td>{{ d.space_total|filesizeformat }}</td>
+                                                                    <td>{{ d.space_used |filesizeformat }}({{ d.space_used_percent }} %)</td>
+                                                                    <td>{{ d.space_free |filesizeformat }}</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="network" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-warning pull-right">Data has changed</span>
+                        <h5>NetWork</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Interface</th>
+                            <th>IP</th>
+                            <th>Bytes sent</th>
+                            <th>Bytes recv</th>
+                            <th>Packets sent</th>
+                            <th>Packets recv</th>
+                            <th>Errors in</th>
+                            <th>Errors out</th>
+                            <th>Dropped in</th>
+                            <th>Dropped out</th>
+                            <th>RX/s</th>
+                            <th>TX/s</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ni in net_interfaces %}
+                            <tr>
+                                <td>{{ net_interfaces[ni].name }}</td>
+                                <td>{{ net_interfaces[ni].ip }}</td>
+                                <td>{{ net_interfaces[ni].bytes_sent }}</td>
+                                <td>{{ net_interfaces[ni].bytes_recv }}</td>
+                                <td>{{ net_interfaces[ni].packets_sent }}</td>
+                                <td>{{ net_interfaces[ni].packets_recv }}</td>
+                                <td>{{ net_interfaces[ni].errors_in }}</td>
+                                <td>{{ net_interfaces[ni].errors_out }}</td>
+                                <td>{{ net_interfaces[ni].dropped_in }}</td>
+                                <td>{{ net_interfaces[ni].dropped_out }}</td>
+                                <td>{{ net_interfaces[ni].send_rate|default(0)|filesizeformat }}</td>
+                                <td>{{ net_interfaces[ni].recv_rate|default(0)|filesizeformat }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                        </div>
+                    </div>
+
+
+                </div></div>
+        </div>
+                            </div>
+                        </div>
+                        <div id="swap" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <span class="label label-warning pull-right">Data has changed</span>
+                                                <h5>Swap</h5>
+                                            </div>
+                                            <div class="ibox-content">
+                                                <div class="row">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                    <td class="label-col">Total</td>
+                                                                    <td class="total">{{ swap.total|filesizeformat }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="label-col">Used</td>
+                                                                    <td class="used">{{ swap.used|filesizeformat }} ({{ swap.percent }} %)</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="label-col">Free</td>
+                                                                    <td class="free">{{ swap.free|filesizeformat }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="label-col">Swapped in</td>
+                                                                    <td class="swapped-in">{{ swap.swapped_in|filesizeformat }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="label-col">Swapped out</td>
+                                                                    <td class="swapped-out">{{ swap.swapped_out|filesizeformat }}</td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="user" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <span class="label label-warning pull-right">Data has changed</span>
+                                                <h5>User</h5>
+                                            </div>
+                                            <div class="ibox-content">
+                                                <div class="row">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>User</th>
+                                                                <th>Session started</th>
+                                                                <th>Host</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                {% for u in users %}
+                                                                    <tr>
+                                                                        <td>{{ u.name }}</td>
+                                                                        <td>{{ u.started|fromtimestamp }}</td>
+                                                                        <td>{{ u.host }}</td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ request.script_root }}/static/admin/js/update.js"></script>
+{% endblock %}

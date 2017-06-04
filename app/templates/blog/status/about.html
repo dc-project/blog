@@ -1,0 +1,70 @@
+{% extends "base/base.html" %}
+{% block title %}- {% if name=='blog' %}关于博客{% else %}关于{{ name }}{% endif %}{% endblock %}
+{% block styles %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col s12 l10 offset-l1">
+        <div class="card">
+          <div class="card-content" style="padding: 50px">
+            <h1 class="center-align">About {{ name | title }}</h1>
+            <div class="row popimg-container">
+              <div class="col l12 s12 about-content">
+
+<blockquote>
+    {% if name == 'ysicing' %}
+  <p>{{ user.pro_des }} .</p>
+    {% elif name == 'blog' %}
+    <p>
+        Since 2013.<br >
+        Now version {{ get_version() }}.
+    </p>
+    {% else %}
+    {% endif %}
+</blockquote>
+
+<ul>
+<!--
+<li>网络安全爱好者</li>
+<li>GayHub搬运工</li>
+<li>TF折腾 & Linux 折腾</li>
+<li>记录片爱好者</li>
+<li>膜导师</li>
+-->
+</ul>
+
+<p><br>
+<br>
+<br></p>
+
+<p>{% if name== 'ysicing' %}
+    刚刚毕业的大学僧。
+    {% elif name == 'blog' %}
+
+    我白天是个运维&开发工程师，晚上就是个有理想的深度学习爱好者，这是我的博客。我住在天朝的帝都，有条叫做Ergo的狗。
+{% else %}
+    不可描述的大佬
+    {% endif %}
+</p>
+
+              </div>
+            </div>
+            <div class="divider" style="margin: 12px"></div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+{% endblock %}

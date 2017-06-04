@@ -1,0 +1,32 @@
+{% extends "admin/base.html" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ request.script_root }}/static/admin/css/mditor.min.css">
+{% endblock %}
+{% block content %}
+    {% include "admin/posts/post_nav.html" %}
+    <textarea name="editor" id="editor"></textarea>
+
+{% endblock %}
+{% block scripts %}
+        <script src="{{ request.script_root }}/static/admin/js/mditor.min.js"></script>
+        <script>
+                var textarea = document.getElementById('editor');
+                var mditor = Mditor.fromTextarea(textarea);
+                mditor.on('ready',function(){
+                    console.log('mditor', mditor);
+                    console.log('toolbar', mditor.toolbar);
+                    mditor.on('changed', function(){
+                        //console.log('changed',mditor.value);
+                    });
+                    mditor.editor.on('drop',function(event){
+                        console.log('drop',event);
+                    });
+                    mditor.editor.on('paste',function(event){
+                        console.log('paste',event.clipboardData.types);
+                    });
+                    mditor.on('head-dblclick',function(){
+                        console.log('head-dblclick');
+                    });
+                });
+            </script>
+{% endblock %}

@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-image profile-avatar">
+    <a href="/">
+        <img src="{{ user.pro_logo }}" class="circle">
+    </a>
+  </div>
+  <div class="card-content center-align">
+    <p style="font-size: large"><strong>{{ user.pro_name }}</strong></p>
+    <p>运维狗</p>
+  </div>
+  <div class="card-action profile-social">
+    {{ user.pro_des }}
+  </div>
+</div>
+<div class="card sticky-action">
+  <div class="card-content center-align">
+    <p style="font-size: large"><strong>赞助商</strong></p>
+      {% for zzs in link_zzs() %}
+          {% if zzs.lrz_zzs %}
+        <p><a href="{{ zzs.lurl }}" target="_blank" title="{{ zzs.ldes }}">{{ zzs.lname }}</a></p>
+          {% endif %}
+      {% endfor %}
+  </div>
+  <div class="card-action">
+    听说点击这个会给博主带来好运。
+  </div>
+</div>

@@ -1,0 +1,80 @@
+{% extends "admin/base.html" %}
+{% block stylesheets %}
+    <link href="{{ request.script_root }}/static/admin/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+{% include 'admin/nav_cat_bar.html' %}
+<div class="wrapper wrapper-content">
+        <div class="row">
+        <div class="col-sm-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right">Users</span>
+                    <h5>用户总数</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins"><a href="{{ url_for('admin.admin_user',name='list') }}">{{ num_user | count }}</a></h1>
+                    <small>All user</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-info pull-right">Posts</span>
+                    <h5>文章总数</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins"><a href="{{ url_for('admin.admin_posts',name='list') }}">{{ get_list() | length }}</a></h1>
+                    <small>All post</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary pull-right">Links</span>
+                    <h5>友情链接</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins"><a href="{{ url_for('admin.admin_links',name='list') }}"> <span id="online_users">{{ link_zzs() | length }}</span></a></h1>
+{#                    <div class="stat-percent font-bold text-navy">1 <i class="fa fa-level-up"></i></div>#}
+                    <small>Links Status</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-danger pull-right">Connected</span>
+                    <h5>API</h5>
+                </div>
+                <div class="ibox-content">
+                        <h1 class="no-margins"><a href="#"> <span id="online_hosts">1</span></a></h1>
+                    <small>All API</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+    <script src="{{ request.script_root }}/static/admin/js/plugins/toastr/toastr.min.js"></script>
+    <script>
+    $(document).ready(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('这个666', 'Welcome to {{ user.username }}');
+
+            }, 1300);});
+
+    </script>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+{% include "admin/monitor/jk_bar.html" %}
+{% endblock %}
+{% block scripts %}
+    <!-- chart -->
+    <script src="{{ request.script_root }}/static/admin/js/plugins/Chart/Chart.min.js"></script>
+{% endblock %}

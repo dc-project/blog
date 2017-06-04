@@ -1,0 +1,14 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-10">
+        <h2>用户管理</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ url_for('admin.adminds') }}">仪表盘</a>
+            </li>
+            <li><a>用户管理</a></li>
+            <li class="active"><strong>{% if name=='group' %}查看用户组{% elif name=='list' %}用户列表{% elif name=='add' %}添加用户{% elif name=='del' %}删除所选{% elif name=='update' %}更新信息{% endif %}</strong></li>
+        </ol>
+    </div>
+    <div class="col-sm-2">
+    </div>
+</div>

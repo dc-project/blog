@@ -1,0 +1,59 @@
+{% extends "base/base.html" %}
+{% block title %}
+    {% if tag %}
+       - Tag {{ tag }}
+    {% else %}
+        - All Tags
+    {% endif %}
+{% endblock %}
+{% block styles %}
+    {{ super() }}
+    <style>
+.group-tags .tag-box{list-style:none;margin:0;padding:5px 0;overflow:hidden}.group-tags .tag-box a,.group-tags span.more{padding:3px 6px;margin:2px}.group-tags .tag-box li{line-height:28px;float:left}.group-tags .tag-box a span{vertical-align:super;font-size:.8em}
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container">
+    <div class="row">
+    <div class="col s10">
+    <section id="content" class="tags-content">
+        {% if tag != 'all' %}
+        <h2>Tag: {{ tag.upper() }}<div class="chip">{{ tagdict[tag] }}</div></h2>
+            <section>
+            <ul class="posts-list collection">
+                {% for post in posts %}
+                    {% if tag in post.tags.lower() %}
+                        <li class="collection-item">{{ post.date }}<span> » </span> <a href="{{ url_for('blog.post', name=post.path.replace('posts/', '')) }}" title="{{ post.title }} By {{ post.author }}" target="_blank">{{ post.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            </section>
+        {% else %}
+        <div>
+        <h2>All Tags:</h2>
+        <section class="group-tags">
+            <ul class="tag-box">
+                {% for(name,count) in tagdict.items() %}
+                    <li>
+                        <a href="/tag/{{ name }}">
+                            {{ name }} <span>{{ count }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        </div>
+    {% endif %}
+    </section>
+    </div>
+    <div class="col s2">
+        <div class="card">
+            {% if tag != 'all' %}
+                intro {{ tag }}
+            {% endif %}
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

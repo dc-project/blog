@@ -1,0 +1,63 @@
+{% extends "base/base.html" %}
+{% block title %}- {{ post.title }}{% endblock %}
+{% block styles %}
+    {{ super() }}
+    <!--
+    <link href="/static/comm/css/prism.css" rel="stylesheet" type="text/css" />
+    -->
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col s12 l10 offset-l1">
+<div class="card">
+    <article class="card-content">
+      <h1 class="center-align">
+        {{ post.title }}
+      </h1>
+      <div class="row">
+        <div class="col l4 m9 s7 left">
+          <span>{{ post.date }}</span>
+        </div>
+        <div class="col l3 m3 s5 right right-align">
+          <i class="material-icons vertical-bottom">turned_in</i>
+            {% for itag in post.tags.split() %}
+          <a href="{{ url_for('blog.tag',tag=itag) }}">
+            <strong>{{ itag }} </strong>
+          </a>
+            {% endfor %}
+        </div>
+      </div>
+      <div class="article-content popimg-container">
+        {% autoescape on %}
+          {{ post.html | markdown }}
+        {% endautoescape %}
+      </div>
+      <div class="copyright center-align" style="margin: 50px">
+        666
+      </div>
+      <div class="row" style="margin: 10px">
+        <h4><a class="black-text" name="recommend">推荐阅读 : </a></h4>
+        <ul>
+          {% for similar_article in similar_articles %}
+            <li>
+              <a href="/a/{{ similar_article.slug }}/">
+                {{ similar_article.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </article>
+
+  <div class="divider"></div>
+    {% include 'pl.html' %}
+</div>
+      </div></div></div>
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+    <!--
+      <script src="/static/comm/js/prism.js" type="text/javascript"></script>
+    -->
+{% endblock %}

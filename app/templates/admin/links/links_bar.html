@@ -1,0 +1,14 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-10">
+        <h2>友情链接</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ url_for('admin.adminds') }}">仪表盘</a>
+            </li>
+            <li><a>友情链接</a></li>
+            <li class="active"><strong>{% if name=='add' %}添加友情链接{% elif name=='list' %}友情链接列表{% elif name=='del' %}删除友情链接{% elif name=='update' %}更新信息{% endif %}</strong></li>
+        </ol>
+    </div>
+    <div class="col-sm-2">
+    </div>
+</div>

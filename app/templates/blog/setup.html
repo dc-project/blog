@@ -1,0 +1,152 @@
+{% extends "base/sp.html" %}
+{% block title %} Install{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ request.script_root }}/static/comm/setup/setup.css">
+    <link rel="stylesheet" href="{{ request.script_root }}/static/comm/setup/semantic.min.css">
+    <script src="{{ request.script_root }}/static/comm/js/jquery-3.1.1.min.js"></script>
+	<script src="{{ request.script_root }}/static/comm/setup/semantic.min.js"></script>
+    <!--
+    <script src="https://git.opscdn.top/js/gogs.js?v=26cb9ffed73d10a2ba33428861599af6"></script>
+    -->
+
+{% endblock %}
+{% block content %}
+    <div class="install">
+	<div class="ui middle very relaxed page grid">
+		<div class="sixteen wide center aligned centered column">
+			<h3 class="ui top attached header">
+				Blog Setting
+			</h3>
+			<div class="ui attached segment">
+				<p>本博客基于Docker技术开发，定制自行根据Dockerfile修订</p>
+
+				<form class="ui form" method="post" accept-charset="utf-8" autocomplete="off" role="form" action="/setup">
+
+					<h4 class="ui dividing header">数据库参数</h4>
+					<p>博客默认使用SQLite3数据库，可支持Mysql、PostgreSQL、TiDB <!--或MongoDB-->。</p>
+					<div class="inline required field ">
+						<label>数据库类型</label>
+						<div class="ui selection database type dropdown">
+							<input type="hidden" id="db_type" name="db_type" value="SQLite3" readonly>
+							<div class="text">SQLite3</div>
+						</div>
+					</div>
+					<div id="sqlite_settings" class="">
+						<div class="inline required field ">
+							<label for="db_path">数据库文件路径</label>
+							<input id="db_path" name="db_path" value="/data/blog/app/blog.db" readonly>
+							<span class="help">SQLite3 作为服务启动时，请使用绝对路径。</span>
+						</div>
+					</div>
+
+
+					<h4 class="ui dividing header">博客基本设置</h4>
+					<div class="inline required field ">
+						<label for="blog_name">博客名</label>
+						<input id="blog_name" name="blog_name" value="Ops Notes" required>
+					</div>
+					<div class="inline required field ">
+						<label for="blog_info">博客简介</label>
+						<input id="blog_info" name="blog_info" value="一个神奇的博客" required>
+					</div>
+					<div class="inline required field ">
+						<label for="blog_admin">管理员</label>
+						<input id="blog_admin" name="blog_admin" value="root" required>
+					</div>
+					<div class="inline required field">
+						<label for="password">管理员密码</label>
+						<input id="password" name="password" value="" type="password" required>
+					</div>
+
+					<div class="inline required field">
+						<label for="github">Github</label>
+						<input id="github" name="github" value=""  required>
+					</div>
+
+					<div class="inline required field">
+						<label for="reset_anhao">管理员暗号</label>
+						<input id="reset_anhao" name="reset_anhao" value="一行白鹭上青天" required>
+                        <span class="help">用于找回密码= =</span>
+                    </div>
+					<div class="inline required field">
+						<label for="email">管理员邮箱</label>
+						<input id="email" name="email" value="root@ysicing.net" type="email" required>
+					</div>
+
+					<h4 class="ui dividing header">可选设置</h4>
+
+					<div class="ui accordion optional field">
+						<div class="title ">
+							<i class="icon dropdown"></i>
+							邮件服务设置
+						</div>
+						<div class="content">
+							<div class="inline field">
+								<label for="smtp_host">SMTP 主机</label>
+								<input id="smtp_host" name="smtp_host" value="">
+							</div>
+							<div class="inline field ">
+								<label for="smtp_from">邮件来自</label>
+								<input id="smtp_from" name="smtp_from" value="">
+								<span class="help">邮件来自地址，遵循 RFC 5322 标准。可以是一个单纯的邮箱地址或使用 &#34;Name&#34; &lt;email@example.com&gt; 的格式。</span>
+							</div>
+							<div class="inline field ">
+								<label for="smtp_email">发送邮箱</label>
+								<input id="smtp_email" name="smtp_email" value="">
+							</div>
+							<div class="inline field">
+								<label for="smtp_passwd">发送邮箱密码</label>
+								<input id="smtp_passwd" name="smtp_passwd" type="password" value="">
+							</div>
+							<div class="inline field">
+								<div class="ui checkbox">
+									<label><strong>启用邮件通知提醒</strong></label>
+									<input name="mail_notify" type="checkbox" >
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ui accordion optional field">
+						<div class="title ">
+							<i class="icon dropdown"></i>
+							其它设置
+						</div>
+						<div class="content">
+							<div class="inline field">
+								<div class="ui checkbox" id="enable-captcha">
+									<label class="poping up" data-content="要求在用户注册时输入预验证码"><strong>启用验证码服务</strong></label>
+									<input name="enable_captcha" type="checkbox">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="ui divider"></div>
+					<div class="inline field">
+						<label></label>
+						<button class="ui primary button" type="submit" id="submit">立即安装</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+{% block footer %}
+    <footer>
+    <div class="ui container">
+			<div class="ui left">
+				© 2014-2017 Goblog Version: 4.0.1
+			</div>
+			<div class="ui right links">
+
+				<div class="ui language bottom floating slide up dropdown link item">
+					<i class="world icon"></i>
+					<div class="text">简体中文</div>
+				<a target="_blank" href="//ysicing.net">官方网站</a>
+				<span class="version">Flask0.12</span>
+			</div>
+		</div>
+	</footer>
+{% endblock %}

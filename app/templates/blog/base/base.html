@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ blog_name() }} {% block title %}{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ysicing" />
+    <meta name="description" content="{% block description %}Goblog is personal blog in python{% endblock %}" />
+	<meta name="keywords" content="{% block keywords %}Python,Docker,Ysicing,ops{% endblock %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link rel="shortcut icon" href="{{ request.script_root }}/static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ request.script_root }}/static/comm/img/favicon.ico" type="image/x-icon">
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="apple-mobile-app-status-bar-style" content="black">
+    {% block ys %}
+        {{ blog_meta_key() | safe }}
+    {% endblock %}
+    {% block styles %}
+        <link rel="stylesheet" href="{{ request.script_root }}/static/blog/css/main.css">
+        <link rel="stylesheet" href="{{ request.script_root }}/static/blog/css/animate.css">
+        <script src="{{ request.script_root }}/static/comm/js/jquery-3.1.1.min.js"></script>
+
+    {% endblock %}
+</head>
+<body>
+<div class="main">
+{% block header %}
+    {% include "base/nav.html" %}
+{% endblock %}
+
+
+ {% block content %}
+
+ {% endblock %}
+
+
+{% block footer %}
+    {% include "base/footer.html" %}
+{% endblock%}
+{% block scripts %}
+    <script src="{{ request.script_root }}/static/blog/js/materialize.min.js"></script>
+    <script src="{{ request.script_root }}/static/blog/js/lib.js"></script>
+    <script>
+          $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left', // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
+    }
+  );
+          $(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+  });
+    //hljs.initHighlightingOnLoad();
+    hljs.initHighlightingOnLoad();
+    </script>
+{% endblock %}
+</div>
+</body>
+</html>

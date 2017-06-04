@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ blog_name() }} - Reset</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ request.script_root }}/static/blog/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ request.script_root }}/static/blog/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{ request.script_root }}/static/comm/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ request.script_root }}/static/comm/css/vendor/font-awesome/css/font-awesome.min.css" />
+    <link href='{{ request.script_root }}/static/comm/css/vendor/lato.css' rel='stylesheet' type='text/css'>
+    <link href='{{ request.script_root }}/static/comm/css/vendor/raleway.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ request.script_root }}/static/blog/css/login.css">
+    <script src="{{ request.script_root }}/static/comm/js/vendor/moment.min.js"></script>
+    <script type="text/javascript">
+        var script_root = "{{ request.script_root }}";
+    </script>
+    <style>
+    #login-container {
+        padding-left:  60px;
+        padding-right: 60px;
+    }
+
+    .done-row {
+        padding-top: 15px;
+        margin: 0px;
+    }
+    </style>
+</head>
+<body>
+  <div class="body-container">
+        <div class="jumbotron home">
+    <div class="container">
+        <h1>请说出你的暗号</h1>
+    </div>
+</div>
+<div class="container main-container">
+    <div class="row">
+        <div id="login-container" class="col-md-6 col-md-offset-3">
+            {% if error %}
+                <div class="alert alert-danger alert-dismissable" role="alert">
+                  <span class="sr-only">Error:</span>
+                  {{ error }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+            {% endif %}
+
+            <form method="post" accept-charset="utf-8" autocomplete="off" role="form" class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="input">
+                            <input class="input-field" type="text" name="name" id="name-input" />
+                            <label class="input-label" for="name-input">
+                                <span class="label-content">User Name</span>
+                            </label>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="input">
+                            <input class="input-field" type="password" name="anhao" id="password-input" />
+                            <label class="input-label" for="password-input">
+                                <span class="label-content" data-content="Password">暗号</span>
+                            </label>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="input">
+                            <input class="input-field" type="text" name="email" id="email-input" />
+                            <label class="input-label" for="email-input">
+                                <span class="label-content">邮箱</span>
+                            </label>
+                        </span>
+                    </div>
+                </div>
+                <div class="done-row row">
+                    <div class="col-md-6">
+                        <button type="submit" id="submit" tabindex="5" class="btn btn-md btn-theme btn-outlined pull-right">找回密码</button>
+                    </div>
+                </div>
+                <input type="hidden" name="nonce" value="{{ nonce }}">
+            </form>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+  </div>
+  <script src="{{ request.script_root }}/static/comm/js/jquery-3.1.1.min.js"></script>
+  <script src="{{ request.script_root }}/static/comm/js/vendor/marked.min.js"></script>
+  <script src="{{ request.script_root }}/static/comm/js/vendor/bootstrap.min.js"></script>
+  {% block scripts %}
+  {% endblock %}
+</body>
+</html>

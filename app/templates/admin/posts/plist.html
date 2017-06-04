@@ -1,0 +1,117 @@
+{% extends "admin/base.html" %}
+{% block content %}
+{% include "admin/posts/post_nav.html" %}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> 文章列表<span class="label label-info pull-right">{{ mdpost() | length }}</span> </h5>
+                    <div class="ibox-tools">
+                        <a class="collapise-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <style>
+                    .upload-btn{position: relative;overflow: hidden;margin-right: 4px;display: inline-block;
+                    *display: inline;padding: 4px 10px 4px;font-size: 14px;line-height: 18px;
+                    *line-height: 20px;color: #fff;
+                    text-align:center;vertical-align:middle;cursor:pointer;background: #5bb77e;border :1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;
+border-bottom-color:#b3b3b3;-webkit-border-radius:4px;
+-moz-border-radius:4px;border-radius:4px;
+                    }
+                    .upload-btn input{position: absolute;top: 0; right: 0;margin: 0;border:solid transparent;
+opacity: 0;filter:alpha(opacity=0); cursor: pointer;}
+                </style>
+                <div class="ibox-content">
+                    <div class="">
+                        <a href="#" class="btn btn-sm btn-primary upload-btn"> <span>上传文章</span>
+                            <input id="fileupload" type="file" name="blogpost">
+                        </a>
+                        <a id="del_btn" class="btn btn-sm btn-danger disabled"> 删除所选 </a>
+                        <form id="search_form" method="get" action="" class="pull-right mail-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control input-sm" id="search_input" name="keyword" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button id='search_btn' type="submit" class="btn btn-sm btn-primary">
+                                        -搜索-
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <table class="table table-striped table-bordered table-hover " id="editable" >
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <input type="checkbox" id="check_all" onclick="checkAll('check_all', 'checked')">
+                                </th>
+                                <th class="text-center">文章</th>
+                                <th class="text-center">作者</th>
+                                <th class="text-center">标签</th>
+                                <th class="text-center">评论</th>
+                                <th class="text-center">日期</th>
+                                <th class="text-center">路径</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in mdpost() %}
+                            <tr class="gradeX">
+                                <td class="text-center">
+                                    <input type="checkbox" name="checked" value="{{ post.title }}">
+                                </td>
+                                <td class="text-center"><a href="{{ url_for('blog.post',name=post.path.split('/')[1]) }}">{{ post.title }}</a></td>
+                                <td class="text-center"> {{ post.author }} </td>
+                                <td class="text-center"> {{ post.tags }}</td>
+                                <td class="text-center"> {% if (comment(post.path)|length)==0  %}暂无评论 {% else %} {{ comment(post.path)|length }}{% endif %}</td>
+                                <th class="text-center">{{ post.date  }}</th>
+                                <td class="text-center">{{ post.path }}</td>
+                                <td class="text-center">
+                                    <a href="#" class="btn btn-xs btn-info disabled">编辑</a>
+                                    <a value="#?id=" class="btn btn-xs btn-danger del {% if session[username] == 'admin' %} disabled {% else %}disabled{% endif %}">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+    <!--
+    <script src="{{ request.script_root }}/static/comm/js/jq.form.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        var btn = $(".upload-btn span");
+        $("#fileupload").wrap("<form id='myupload' action='{{ url_for('admin.admin_posts',name='upload') }}' method='post' enctype='multipart/form-data'></form>");
+        $("#fileupload").change(function () {
+            $("#myupload").AjaxSubmit({
+                dataType: 'json',
+                success:function (data) {
+                    if(data.r){
+                    btn.html("上传文章");}else{
+                        btn.html("重新上传");
+                    }
+
+                }
+            });
+        });
+    });
+    </script>
+    -->
+{% endblock %}

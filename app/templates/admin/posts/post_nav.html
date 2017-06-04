@@ -1,0 +1,14 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-10">
+        <h2>{% if name == 'list' %}文章列表{% elif name== 'comment' %}评论列表{% else %}管理文章{% endif %}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ url_for('admin.adminds') }}">仪表盘</a>
+            </li>
+            <li><a>文章管理</a></li>
+            <li class="active"><strong>{% if name == 'list' %}文章列表{% elif name== 'comment' %}评论列表{% else %}管理文章{% endif %}</strong></li>
+        </ol>
+    </div>
+    <div class="col-sm-2">
+    </div>
+</div>

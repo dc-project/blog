@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ysicing">
+    <title>归档</title>
+
+    <!-- Lato Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Stylesheet -->
+    <link href="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/gallery-materialize.min.opt.css?8426035549349607549" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Prism -->
+    <link href="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/prism.css?8426035549349607549" rel="stylesheet">
+
+    <script type="text/javascript">
+//<![CDATA[
+      var Shopify = Shopify || {};
+      Shopify.shop = "materialize-themes.myshopify.com";
+      Shopify.theme = {"name":"debut","id":133945025,"theme_store_id":796,"role":"main"};
+      Shopify.theme.handle = 'null';
+      Shopify.theme.style = {"id":null,"handle":null};
+
+//]]>
+</script><script id="__st">
+//<![CDATA[
+var __st={"a":17758583,"offset":-28800,"reqid":"4b0f040e-ac99-4078-a639-18d11f50c7f3","pageurl":"themes.materializecss.com\/pages\/docs","s":"pages-199726529","u":"082c43dd27af","p":"page","rtyp":"page","rid":199726529};
+//]]>
+</script><script src="https://cdn.shopify.com/s/javascripts/shopify_stats.js?v=6" type="text/javascript" async="async"></script>
+<meta id="shopify-digital-wallet" data-iframe-url="/17758583/digital_wallets/dialog" />
+<script src="//cdn.shopify.com/s/assets/themes_support/ga_urchin_forms-668547562549a84f5dfa01ef82607987f85ecbe1c8301faf25059becfa208199.js" defer="defer"></script>
+      <script type="text/javascript">
+        
+      window.ShopifyAnalytics = window.ShopifyAnalytics || {};
+      window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
+      window.ShopifyAnalytics.meta.currency = 'USD';
+      var meta = {"page":{"pageType":"page","resourceType":"page","resourceId":199726529}};
+      for (var attr in meta) {
+        window.ShopifyAnalytics.meta[attr] = meta[attr];
+      }
+      </script>
+      <script type="text/javascript" class="analytics">
+        (window.gaDevIds=window.gaDevIds||[]).push('BwiEti');
+        
+
+        (function () {
+          var customDocumentWrite = function(content) {
+            var jquery = null;
+
+            if (window.jQuery) {
+              jquery = window.jQuery;
+            } else if (window.Checkout && window.Checkout.$) {
+              jquery = window.Checkout.$;
+            }
+
+            if (jquery) {
+              jquery('body').append(content);
+            }
+          };
+
+          var trekkie = window.ShopifyAnalytics.lib = window.trekkie = window.trekkie || [];
+          if (trekkie.integrations) {
+            return;
+          }
+          trekkie.methods = [
+            'identify',
+            'page',
+            'ready',
+            'track',
+            'trackForm',
+            'trackLink'
+          ];
+          trekkie.factory = function(method) {
+            return function() {
+              var args = Array.prototype.slice.call(arguments);
+              args.unshift(method);
+              trekkie.push(args);
+              return trekkie;
+            };
+          };
+          for (var i = 0; i < trekkie.methods.length; i++) {
+            var key = trekkie.methods[i];
+            trekkie[key] = trekkie.factory(key);
+          }
+          trekkie.load = function(config) {
+            trekkie.config = config;
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.onerror = function(e) {
+              (new Image()).src = '//v.shopify.com/internal_errors/track?error=trekkie_load';
+            };
+            script.async = true;
+            script.src = 'https://cdn.shopify.com/s/javascripts/tricorder/trekkie.storefront.min.js?v=2017.02.23.1';
+            var first = document.getElementsByTagName('script')[0];
+            first.parentNode.insertBefore(script, first);
+          };
+          trekkie.load(
+            {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":17758583}},"Performance":{"navigationTimingApiMeasurementsEnabled":true,"navigationTimingApiMeasurementsSampleRate":0.1},"Google Analytics":{"trackingId":"UA-56218128-1","domain":"auto","siteSpeedSampleRate":"10","enhancedEcommerce":true,"doubleClick":true,"includeSearch":true}}
+          );
+
+          var loaded = false;
+          trekkie.ready(function() {
+            if (loaded) return;
+            loaded = true;
+
+            window.ShopifyAnalytics.lib = window.trekkie;
+            
+      ga('require', 'linker');
+      function addListener(element, type, callback) {
+        if (element.addEventListener) {
+          element.addEventListener(type, callback);
+        }
+        else if (element.attachEvent) {
+          element.attachEvent('on' + type, callback);
+        }
+      }
+      function decorate(event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        if (target && (target.getAttribute('action') || target.getAttribute('href'))) {
+          ga(function (tracker) {
+            var linkerParam = tracker.get('linkerParam');
+            document.cookie = '_shopify_ga=' + linkerParam + '; ' + 'path=/';
+          });
+        }
+      }
+      addListener(window, 'load', function(){
+        for (var i=0; i < document.forms.length; i++) {
+          var action = document.forms[i].getAttribute('action');
+          if(action && action.indexOf('/cart') >= 0) {
+            addListener(document.forms[i], 'submit', decorate);
+          }
+        }
+        for (var i=0; i < document.links.length; i++) {
+          var href = document.links[i].getAttribute('href');
+          if(href && href.indexOf('/checkout') >= 0) {
+            addListener(document.links[i], 'click', decorate);
+          }
+        }
+      });
+    
+
+            var originalDocumentWrite = document.write;
+            document.write = customDocumentWrite;
+            try { window.ShopifyAnalytics.merchantGoogleAnalytics.call(this); } catch(error) {};
+            document.write = originalDocumentWrite;
+
+            
+        window.ShopifyAnalytics.lib.page(
+          null,
+          {"pageType":"page","resourceType":"page","resourceId":199726529}
+        );
+      
+            
+          });
+
+          
+      var eventsListenerScript = document.createElement('script');
+      eventsListenerScript.async = true;
+      eventsListenerScript.src = "//cdn.shopify.com/s/assets/shop_events_listener-e9a55102d917c9da34b010b35ea7d4f9994a49a04a91f90102547f343a0c0b1e.js";
+      document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);
+    
+        })();
+      </script>
+        <script type="text/javascript">
+        //<![CDATA[
+              window.ShopifyExperiments = window.ShopifyExperiments || {};
+              window.ShopifyExperiments.digitalWallet = true;
+
+        //]]>
+        </script>
+</head>
+  <body class="doc">
+
+    <!-- Navbar and Header -->
+    <nav class="nav-extended x">
+      <div class="nav-wrapper db">
+        666
+      </div>
+    </nav>
+    <div id="documentation" class="cx gray">
+      <div class="db">
+        <div class="e">
+          <div class="d gu hz">
+            <div id="opsdev" class="scrollspy">
+              <h3>运维篇</h3>
+              <p class="ef">搞事情，想偷懒，不背锅</p>
+
+              <div class="b e">
+                <div class="d hf gu gallery-expand">
+                  <div class="gallery-curve-wrapper">
+                    <a class="gallery-cover gray">
+                      <img class="responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-aquamarine.jpg?8426035549349607549" crossOrigin="anonymous" alt="placeholder">
+                    </a>
+                    <div class="gallery-header">
+                      <span>Linux</span>
+                    </div>
+                    <div class="gallery-body">
+                      <div class="title-wrapper">
+                        <h3>Grapefruit</h3>
+                        <span class="gj">$14.99</span>
+                      </div>
+                    </div>
+                    <div class="gallery-action">
+                      <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">favorite</i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="d hf gu">
+                  <h5>Default Transition</h5>
+                  <p class="ef">Image is translated across the screen.</p>
+                </div>
+              </div>
+              <div class="b e">
+                <div class="d hf gu en gallery-expand">
+                  <div class="gallery-curve-wrapper">
+                    <a class="gallery-cover gray" style="height: 250px; width: 170px;">
+                      <img src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-cave.jpg?8426035549349607549" crossOrigin="anonymous" alt="placeholder">
+                    </a>
+                    <div class="gallery-header">
+                      <h4>数据库</h4>
+                      <p>Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth.</p>
+                    </div>
+                    <div class="gallery-body">
+                      <div class="title-wrapper">
+                        <h3>Cave</h3>
+                        <span class="gk">$4.99</span>
+                      </div>
+                    </div>
+                    <div class="gallery-action">
+                      <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">favorite</i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="d hf gu">
+                  <h5>Horizontal Style</h5>
+                  <p class="ef">Horizontal card style is supported.</p>
+                </div>
+              </div>
+              <div class="b e">
+                <div class="d hf gu gallery-expand fill-screen">
+                  <div class="gallery-curve-wrapper">
+                    <a class="gallery-cover gray" style="height: 250px;">
+                    <img src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/overhead.jpg?8426035549349607549" crossOrigin="anonymous" alt="placeholder">
+                    </a>
+                    <div class="gallery-header">
+                      <span>Web应用</span>
+                    </div>
+                    <div class="gallery-body">
+                      <div class="title-wrapper">
+                        <h3>Grapefruit</h3>
+                        <span class="gj">$14.99</span>
+                      </div>
+                    </div>
+                    <div class="gallery-action">
+                      <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">favorite</i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="d hf gu">
+                  <h5>Fill Screen Transition</h5>
+                  <p class="ef">Image is scaled up to fill screen.</p>
+                </div>
+              </div>
+            <br>
+            </div>
+
+            <div id="coding" class="scrollspy">
+              <h4>Coding</h4>
+              <table class="bordered">
+                <thead>
+                  <tr>
+                    <th data-field="id">Option</th>
+                    <th data-field="name">Description</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>inDuration</td>
+                    <td>Transition duration for opening the gallery in ms. Default: 300</td>
+                  </tr>
+                  <tr>
+                    <td>outDuration</td>
+                    <td>Transition duration for closing the gallery in ms. Default: 200</td>
+                  </tr>
+                  <tr>
+                    <td>responsiveThreshold</td>
+                    <td>Breakpoint for full width style in pixels. Default: 992</td>
+                  </tr>
+                  <tr>
+                    <td>contentPadding</td>
+                    <td>Padding for content in the gallery in pixels. Default: 40</td>
+                  </tr>
+                  <tr>
+                    <td>onShow</td>
+                    <td>Callback function that is fired when the gallery is opened.</td>
+                  </tr>
+                  <tr>
+                    <td>defaultColor</td>
+                    <td>Fallback color for when color thief fails. Default: '#444'</td>
+                  </tr>
+                  <tr>
+                    <td>fillScreen</td>
+                    <td>Enable the full width image transition style. Default: false</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <br><br>
+            </div>
+
+            <div id="docker" class="scrollspy">
+              <h3>让云落地</h3>
+              <p class="ef">You can programmatically open and close the GalleryExpand with our plugin methods.</p>
+              <pre><code class="language-javascript">
+// Open
+$('.gallery-expand').galleryExpand('open');
+
+// Close
+$('.gallery-expand').galleryExpand('close');
+</code></pre>
+            <br><br>
+            </div>
+
+
+            <div id="saying" class="scrollspy">
+              <h3>闲言碎语</h3>
+              <p class="ef">
+                This theme utilizes <a href="http://masonry.desandro.com/">Masonry</a> for the card layout. We recommend initializing Masonry like we do below. If you are using images in your masonry items you will need <a href="http://imagesloaded.desandro.com/">imagesLoaded</a>.
+              </p>
+              <pre><code class="language-javascript">
+var $masonry = $('.gallery');
+$masonry.masonry({
+  // set itemSelector so .grid-sizer is not used in layout
+  itemSelector: '.gallery-item',
+  // use element for option
+  columnWidth: '.gallery-item',
+  // no transitions
+  transitionDuration: 0
+});
+
+// layout Masonry after each image loads
+$masonry.imagesLoaded(function() {
+  $masonry.masonry('layout');
+});</code></pre>
+            <br><br>
+            </div>
+
+
+
+          </div>
+          <div class="d gu hv">
+            <ul class="cx table-of-contents hide-on-med-and-down">
+              <li><a href="#opsdev" class="active">运维人生</a></li>
+              <li><a href="#coding">码中世界</a></li>
+              <li><a href="#docker">让云落地</a></li>
+              <li><a href="#saying">闲言碎语</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.container -->
+
+
+    <!-- Core Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="https://cdn.shopify.com/s/files/1/1775/8583/t/1/assets/gallery-docs.min.opt.js?8426035549349607549" crossOrigin="anonymous"></script>
+
+  </body>
+</html>
