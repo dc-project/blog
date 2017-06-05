@@ -9,7 +9,7 @@
 """
 
 from flask import render_template,render_template_string,flash,request,redirect,abort,url_for,session,Blueprint
-from app.models import db,Users,DSF
+from app.models import db,Users,Auth
 from itsdangerous import TimedSerializer,BadTimeSignature
 from app.utils import sha512,authed,get_config,is_safe_url
 from passlib.hash import bcrypt_sha256
@@ -117,7 +117,7 @@ def oauth_github_call():
     )
     auth = github.get_auth_session(data=data)
     respon = auth.get('user').json()
-    user = DSF.get_or_create(respon['login'],respon['name'])
+    user = Auth.get_or_create(respon['login'],respon['name'])
     session['token'] = auth.access_token
     session['user_id'] = user.id
     flash('Logged in as' + respon['name'])

@@ -5,19 +5,7 @@
       </div>
       <div class="col s12 m10 offset-m1 l8">
           {% if (posts_list | length) == 0 %}
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title black-text">
-                          <a href="{{ url_for('auth.oauth') }}" data-instant class="grey-text darken-5"
-                             style="font-size: 1.0em"><strong>欢迎使用<ruby>Goblog<rt>version {{ get_version() }}</rt></ruby></strong></a>
-                        </span>
-                    </div>
-                    <div class="card-action">
-                        <div class="row" style="margin-bottom: 0;">
-
-                        </div>
-                    </div>
-                </div>
+                {% include './home/no_post_intro.html' %}
           {% endif %}
           {% for post in posts_list %}
               {% include './home/post_info.html' %}

@@ -48,14 +48,21 @@ def setup():
             email = request.form['email']
             anhao = request.form['reset_anhao']
             github = request.form['github']
-            print(email)
             avatar_hash = hashlib.md5(email.encode('utf-8')).hexdigest()
-            print(avatar_hash)
+
             first_user = Users(username=username,password=password,email=email,githubname=github,anhao=anhao,avatar_hash=avatar_hash)
             first_user.admin = True
             first_user.verified = True
 
             setup = set_config('setup','True')
+            domain = set_config('domain',request.form['domain'])
+            github_id = request.form['github_id']
+            github_secret = request.form['github_secret']
+            github_status = set_config('github_status','False')
+            if github_id and github_secret:
+                set_config('github_id',github_id)
+                set_config('github_secret',github_secret)
+                set_config('github_status','True')
             db.session.add(first_user)
             db.session.commit()
             db.session.close()

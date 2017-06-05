@@ -76,7 +76,7 @@ class Users(UserMixin,db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-class DSF(db.Model):
+class Auth(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(80), unique=True)
     name = db.Column(db.String(120))
@@ -90,9 +90,9 @@ class DSF(db.Model):
 
     @staticmethod
     def get_or_create(login, name):
-        user = DSF.query.filter_by(login=login).first()
+        user = Auth.query.filter_by(login=login).first()
         if user is None:
-            user = DSF(login, name)
+            user = Auth(login, name)
             db.session.add(user)
             db.session.commit()
         return user
