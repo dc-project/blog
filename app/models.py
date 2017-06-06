@@ -44,7 +44,7 @@ class Users(UserMixin,db.Model):
     last_login = db.Column(db.DATETIME,default=datetime.datetime.now)
     avatar_hash  = db.Column(db.String(32))
     pro_logo = db.Column(db.String(128),default='/static/comm/img/profile.jpg')
-    pro_name = db.Column(db.String(128),default='YsiCing Zheng')
+    pro_name = db.Column(db.String(128),default='Goblog Admin')
     pro_des = db.Column(db.String(128),default='The quieter you become, the more you can hear.')
 
     '''

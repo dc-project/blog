@@ -122,6 +122,12 @@ def admin_user(name):
             return render_template('admin/user/update.html',users=upuser,error='no allow',**data)
         passwd = request.form['password']
         email = request.form['email']
+        if request.form['pro_name']:
+            upuser.pro_name = request.form['pro_name']
+        if request.form['pro_logo']:
+            upuser.pro_logo = request.form['pro_logo']
+        if request.form['pro_des']:
+            upuser.pro_des = request.form['pro_des']
         if passwd:
             #uppasswd = Users(name=upuser.name,
             #                 password=(passwd if passwd else upuser.password),

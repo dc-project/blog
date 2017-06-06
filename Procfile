@@ -1,1 +1,1 @@
-web: gunicorn run:app --log-file - --access-logfile - --error-logfile -
+web: gunicorn app:create_app() --log-file - --access-logfile - --error-logfile -
