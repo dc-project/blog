@@ -31,8 +31,8 @@ github = OAuth2Service(
     base_url='https://api.github.com/',
     access_token_url='https://github.com/login/oauth/access_token',
     authorize_url='https://github.com/login/oauth/authorize',
-    client_id= '',
-    client_secret= '',
+    client_id= '583923627cb8e77e6220',
+    client_secret= '640b3324fd38e5a53d404d924a45004dd1ec2fb4',
 )
 
 @auth.before_app_request
