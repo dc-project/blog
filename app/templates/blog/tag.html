@@ -15,7 +15,7 @@
 {% block content %}
     <div class="container">
     <div class="row">
-    <div class="col s10">
+    <div class="col s8">
     <section id="content" class="tags-content">
         {% if tag != 'all' %}
         <h2>Tag: {{ tag.upper() }}<div class="chip">{{ tagdict[tag] }}</div></h2>
@@ -47,10 +47,25 @@
     {% endif %}
     </section>
     </div>
-    <div class="col s2">
+    <div class="col s4">
         <div class="card">
             {% if tag != 'all' %}
-                intro {{ tag }}
+                <div class="card-content">
+                    <span class="card-title black-text">
+                        <a href="/tag/all" data-instant class="grey-text darken-5"
+                                         style="font-size: 1.0em"><strong>标签:<ruby>{{ tag.upper() }}<rt> {{ tagdict[tag] }}</rt></ruby></strong></a>
+                    </span>
+                </div>
+                <div class="card-action">
+                    <div class="row" style="margin-bottom: 0;">
+                        愿你们既能朝九晚五，又能浪迹天涯
+                        <!--
+                        bgm:
+                        那一年，流川枫离开了他的苍井空。那一年，日子越过越长，距离理想越来越短.
+
+                        -->
+                    </div>
+                </div>
             {% endif %}
         </div>
     </div>

@@ -63,13 +63,13 @@
                                 <td class="text-center"> {{ user.name }} </td>
                                 <td class="text-center" title="{% if user.id == 1 %} 超级管理员 {% elif user.admin %} 管理员 {% else %} 普通用户 {% endif %}"> {% if user.id == 1 %} 超级管理员 {% elif user.admin %} 管理员 {% else %} 普通用户 {% endif %} </td>
                                 <td class="text-center"> {{ user.id  }}</td>
-                                <th class="text-center">{{ user.joined  }}</th>
+                                <th class="text-center">{{ user.last_login  }}</th>
                                 <td class="text-center">{{ user.verified }}</td>
                                 <td class="text-center">
                                     {% if user.banned  %}
                                         <a  href="#?uuid={{ user.website }}" >下载</a>
                                     {% else %}
-                                        <a href="#" onclick="">NoKey GenOne?</a>
+                                        <a href="/admin/web" onclick="">暂不支持此接口</a>
                                     {% endif %}
                                 </td>
                                 <td class="text-center">

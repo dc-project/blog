@@ -25,6 +25,7 @@ from werkzeug.utils import secure_filename
 from functools import wraps
 from itsdangerous import Signer,BadSignature
 from datetime import datetime
+#from app.api import get_tags
 import time
 import os
 import sys
@@ -112,7 +113,6 @@ def init_utils(app):
     app.jinja_env.globals.update(blog_icp=blog_icp)
     app.jinja_env.globals.update(blog_meta_key=blog_meta_key)
     app.jinja_env.globals.update(link_zzs=get_zzs)
-
 
 @cache.memoize()
 def is_setup():

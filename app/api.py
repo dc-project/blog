@@ -396,3 +396,35 @@ def get_comment_post():
 def get_comment_id(cid):
     cm_info = Comment.query.filter_by(cid=cid).first()
     return cm_info
+
+def get_tags():
+    allkey = []
+    tagdict = {}
+    path = '{}/{}'.format(POST_DIR, '')
+    posts = get_list()
+    for xkey in posts:
+        print(xkey)
+        print(xkey['tags'])
+        allkey.append(xkey['tags'])
+    #print('all:', allkey)
+    for i in allkey:
+        if type(i) is list:
+            print('i:', i)
+            for j in i:
+                j = j.lower()
+                tagdict[j] = tagdict.get(j, 0) + 1
+        elif type(i) is str:
+            for j in i.split():
+                j = j.lower()
+                tagdict[j] = tagdict.get(j, 0) + 1
+        else:
+            print('i+:', i, type(i))
+            i = i.lower()
+            tagdict[i] = tagdict.get(i, 0) + 1
+    print(type(tagdict))
+    return sorted(tagdict.items(), key=lambda x: x[1],reverse=True)
+
+try:
+    app.add_template_global(get_tags, 'get_tags')
+except:
+    pass

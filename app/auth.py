@@ -44,6 +44,7 @@ def before_request():
 
 @auth.route('/oauth',methods=['POST','GET'])
 def oauth():
+    gitslogin = get_config('github_status')
     if request.method == 'POST':
         errors = []
         name = request.form['name']
@@ -76,14 +77,14 @@ def oauth():
             else:
                 errors.append("Incorrect Username or password .")
                 db.session.close()
-                return render_template('login.html', errors=errors)
+                return render_template('login.html', errors=errors, gitslogin=gitslogin)
         else:
             errors.append("Not exist or Forbidden")
             db.session.close()
-            return render_template('login.html', errors=errors)
+            return render_template('login.html', errors=errors, gitslogin=gitslogin)
     else:
         db.session.close()
-        return render_template('login.html')
+        return render_template('login.html', gitslogin=gitslogin)
 
 @auth.route('/logout')
 def logout():
