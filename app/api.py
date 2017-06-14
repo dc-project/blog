@@ -403,8 +403,6 @@ def get_tags():
     path = '{}/{}'.format(POST_DIR, '')
     posts = get_list()
     for xkey in posts:
-        print(xkey)
-        print(xkey['tags'])
         allkey.append(xkey['tags'])
     #print('all:', allkey)
     for i in allkey:
@@ -418,10 +416,10 @@ def get_tags():
                 j = j.lower()
                 tagdict[j] = tagdict.get(j, 0) + 1
         else:
-            print('i+:', i, type(i))
+            #print('i+:', i, type(i))
             i = i.lower()
             tagdict[i] = tagdict.get(i, 0) + 1
-    print(type(tagdict))
+    #print(type(tagdict))
     return sorted(tagdict.items(), key=lambda x: x[1],reverse=True)
 
 try:

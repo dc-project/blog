@@ -13,7 +13,10 @@ Personal blog engine written on Flask.
 
 Install Docker [pre-install-docker.sh](./pre-install-docker.sh) 
 
-  `docker pull ysicing/blog`
+  ```
+    docker pull ysicing/blog
+    docker run -ti -d --name blog -p 5000:4000 -v <your-posts-path>:/data/ops/app/content/posts  ysicing/blog
+  ```
 
 ## Demo
 

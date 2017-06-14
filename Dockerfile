@@ -5,6 +5,7 @@ MAINTAINER Ysicing Zheng<root@ysicing.net>
 
 ENV TZ "Asia/Shanghai"
 ENV TERM xterm
+ENV LANG en_US.UTF-8
 
 #自定义源
 ADD sid.list  /etc/apt/sources.list

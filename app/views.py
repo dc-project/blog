@@ -67,7 +67,7 @@ def setup():
             db.session.commit()
             db.session.close()
             logger = logging.getLogger('login')
-            logger.info("[{0}] {1} 注册成功".format(time.strftime("%m/%d/%Y %X"), username.encode('utf-8')))
+            logger.info("[{0}] {1} reg ok".format(time.strftime("%m/%d/%Y %X"), username.encode('utf-8')))
 
             app.setup = False
             with app.app_context():
@@ -84,8 +84,8 @@ def static_html(template):
         if template=='home':
             posts_list=get_list()
             #print(posts_list)
-            #user = Users.query.filter_by(id=1).first_or_404()
-            return render_template('home/%s.html' % template, posts_list=posts_list)
+            user = Users.query.filter_by(id=1).first_or_404()
+            return render_template('home/%s.html' % template, user=user, posts_list=posts_list)
         return render_template('%s.html' % template)
     except TemplateNotFound:
         """

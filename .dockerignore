@@ -5,4 +5,5 @@ _mdwriter.cson
 app/blog.db
 intro/
 test/%
-*.db
+
+*.log

@@ -107,7 +107,8 @@ def init_utils(app):
         user = Users.query.filter_by(id=1).first_or_404()
         app.jinja_env.globals.update(user=user)
     except:
-        pass
+        user = Users.query.filter_by(id=1).first()
+        app.jinja_env.globals.update(user=user)
     app.jinja_env.globals.update(blog_name=blog_name)
     app.jinja_env.globals.update(get_version=get_version)
     app.jinja_env.globals.update(blog_icp=blog_icp)

@@ -76,7 +76,7 @@ def create_app(config="app.config"):
         app.db = db
         cache.init_app(app)
         app.cache = cache
-        app.debug = True
+        app.debug = False
 
         configure_uploads(app, photos)
 
