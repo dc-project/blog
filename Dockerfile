@@ -16,6 +16,8 @@ RUN mkdir -p /data/ops
 COPY . /data/ops
 WORKDIR /data/ops
 
+VOLUME ["/data/ops"]
+
 RUN echo $(python3.6 -V) && apt update && apt install -y sudo lsof python3.6-dev openssl gcc libssl-dev libcurl4-openssl-dev
 
 RUN python3.6 -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
