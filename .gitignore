@@ -27,7 +27,7 @@ pip-log.txt
 .cache
 .coverage
 *.log
-
+git-push.sh
 .DS_Store
 *.db
 .*.swp
