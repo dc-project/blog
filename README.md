@@ -1,26 +1,8 @@
-## Intro
-Personal blog engine written on Flask.
+## Dev Intro
 
-## Install
+重构一下代码
 
-#### VPS
+## Dev Version
 
-1. `./pre-install.sh` to install dependencies using apt(apt-get).
-2. Use `python run.py` in a terminal(eg:Iterm) to drop into debug mode.
-3. Maybe support modify configurations.
+0.2
 
-#### Docker
-
-Install Docker [pre-install-docker.sh](./pre-install-docker.sh) 
-
-  ```
-    docker pull ysicing/blog
-    docker run -ti -d --name blog -p 5000:4000 -v <your-posts-path>:/data/ops/app/content/posts  ysicing/blog
-  ```
-
-## Demo
-
-[https://notes.ysicing.net](https://notes.ysicing.net)
-
-## Version
-0.1
