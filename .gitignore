@@ -35,3 +35,9 @@ git-push.sh
 target/
 .blog_secret_key
 
+.git/
+
+app/content/
+app/logs/
+app/plugins/
+test/
