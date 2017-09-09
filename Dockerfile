@@ -2,6 +2,9 @@ FROM debian:stretch
 
 MAINTAINER Ysicing Zheng<root@ysicing.net>
 
+ENV TZ "Asia/Shanghai"
+ENV TERM xterm
+ENV LANG en_US.UTF-8
 
 # pip http
 COPY pip.conf /root/.pip/pip.conf
@@ -15,21 +18,15 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update; \
     rm -rf /var/lib/apt/lists/*
 
 
-ENV TZ "Asia/Shanghai"
-ENV TERM xterm
-ENV LANG en_US.UTF-8
+RUN mkdir -p /data/blog
+COPY . /data/blog
+WORKDIR /data/blog
 
-RUN mkdir -p /data/ops
-COPY . /data/ops
-WORKDIR /data/ops
+VOLUME /data/blog
 
-VOLUME ["/data/ops"]
+EXPOSE 9090
 
-RUN pip3 install -r requirements.txt
-
-EXPOSE 8000
-
-CMD ["bash"]
+ENTRYPOINT ["/data/blog/docker-entrypoint.sh"]
 
 
 

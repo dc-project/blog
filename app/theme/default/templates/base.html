@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>{% block title %}404{% endblock %}</title>
+    {% include "_includes/meta.html" %}
+</head>
+
+<body>
+    {% include "_layouts/header.html" %}
+    {% block main %}
+        404
+    {% endblock %}
+    {% include "_layouts/footer.html" %}
+</body>
+</html>
