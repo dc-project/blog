@@ -40,7 +40,7 @@ case $action in
     ;;
     test)
         build
-
+        test
     ;;
     push)
         push

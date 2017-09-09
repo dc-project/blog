@@ -22,7 +22,7 @@ RUN mkdir -p /data/blog
 COPY . /data/blog
 WORKDIR /data/blog
 
-VOLUME /data/blog
+VOLUME /data/blog/app/posts
 
 EXPOSE 9090
 
