@@ -31,6 +31,7 @@ function push(){
 }
 
 function test(){
+    docker build --no-cache -t $image_name:$release_version-$buildRelease-$git_commit .
     docker ps -a | grep blog | cut -d ' ' -f 1 | xargs docker rm -f
     docker run -itd --name blog -p 9090:9090 $image_name:$release_version-$buildRelease-$git_commit
 }
@@ -40,7 +41,7 @@ case $action in
         build
     ;;
     test)
-        build
+        #build
         test
     ;;
     push)

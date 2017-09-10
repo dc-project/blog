@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block desc %}Blog System{% endblock %}">
     <title>{% block title %}404{% endblock %}</title>
     {% include "_includes/meta.html" %}
+    {% include "_includes/css.html" %}
 </head>
 
 <body>
-    {% include "_layouts/header.html" %}
-    {% block main %}
-        404
-    {% endblock %}
-    {% include "_layouts/footer.html" %}
+    <div class="wrapper">
+        {% include "_layouts/header.html" %}
+        {% block main %}
+            <h1 class="page-title">
+                <div class="page-title__text"></div>
+                <div class="page-title__subtitle"></div>
+            </h1>
+            <ul class="list-posts">
+
+            </ul>
+        {% endblock %}
+        {% include "_layouts/footer.html" %}
+        {% include "_includes/js.html" %}
+    </div>
 </body>
 </html>
