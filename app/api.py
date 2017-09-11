@@ -21,5 +21,5 @@ def apiv1(name=None):
     if name is None:
         apiv1 = {'info': 'api', 'version': 'v1'}
     else:
-        apiv1 = {'info': name, 'version': 'v1'}
+        apiv1 = [{'id': 1, 'title': 'test'},{'id': 2, 'title': 'test2'}]
     return jsonify(apiv1)
