@@ -12,12 +12,13 @@ from flask_frozen import Freezer
 from flask_flatpages import FlatPages
 from flask import current_app as app, jsonify
 
+
 flatpages = FlatPages(app)
 freezer = Freezer(app)
 
 
 class Post(object):
-    def __init__(self, ext,post_dir):
+    def __init__(self, ext, post_dir):
         self.ext = ext
         self.post_dir = post_dir
 
@@ -27,9 +28,9 @@ class Post(object):
         except:
             posts = [post for post in flatpages if post.path]
         try:
-            posts.sort(key=lambda item: item['date'],reverse=True)
+            posts.sort(key=lambda item: item['date'], reverse=True)
         except:
-            posts = sorted(posts, reverse=True, key=lambda post:post['date'])
+            posts = sorted(posts, reverse=True, key=lambda post: post['date'])
         return posts
 
     def recent_post(self):

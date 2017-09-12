@@ -39,3 +39,8 @@ class Config(object):
     SESSION_FILE_DIR = "/tmp/flask_session"
     SESSION_COOKIE_HTTPONLY = True
     PERMANENT_SESSION_LIFETIME = 604800
+
+    FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'headerid']
+    FLATPAGES_ROOT = 'posts'
+    FLATPAGES_EXTENSION = '.md'
+    FLATPAGES_AUTO_RELOAD = True
