@@ -10,6 +10,7 @@
 
 import re
 import os
+import json
 
 from flask import current_app as app, render_template, request, redirect, Blueprint, jsonify
 
@@ -24,8 +25,13 @@ post = Post('.md', 'posts')
 @api.route('/api/v1/<name>')
 def apiv1(name=None):
     get_list = post.get_posts_list()
+    d={}
+    for i in get_list:
+        print(i.path)
+        t = i.path
+        d[t] = i.meta
     if name is None:
-        apiv1 = {'info': 'api', 'version': 'v1', 'post': len(get_list)}
+        apiv1 = {'info': 'api', 'version': 'v1', 'post': len(get_list), 'all': str(type(get_list))}
     else:
-        apiv1 = [{'id': 1, 'title': 'test'},{'id': 2, 'title': 'test2'}]
+        return jsonify(d)
     return jsonify(apiv1)
