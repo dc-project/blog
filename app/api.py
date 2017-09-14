@@ -12,7 +12,7 @@ import re
 import os
 import json
 
-from flask import current_app as app, render_template, request, redirect, Blueprint, jsonify
+from flask import current_app as app, render_template, request, url_for, redirect, Blueprint, jsonify
 
 from app.blog import Post
 
@@ -22,16 +22,25 @@ post = Post('.md', 'posts')
 
 
 @api.route('/api/v1')
-@api.route('/api/v1/<name>')
-def apiv1(name=None):
-    get_list = post.get_posts_list()
-    d={}
-    for i in get_list:
-        print(i.path)
-        t = i.path
-        d[t] = i.meta
-    if name is None:
-        apiv1 = {'info': 'api', 'version': 'v1', 'post': len(get_list), 'all': str(type(get_list))}
+def api_index():
+    return 'api index'
+
+
+@api.route('/api/v1/post/<name>')
+def api_post(name):
+    if name == 'all':
+        return jsonify({key.path: key.meta for key in post.get_posts_list()})
+    elif name == 'recent':
+        return jsonify({key.path: key.meta for key in post.recent_post()})
     else:
-        return jsonify(d)
-    return jsonify(apiv1)
+        return redirect(url_for('api.api_index'))
+
+@api.route('/api/v1/tag/<name>')
+def api_tag(name):
+    if name == 'all':
+        return jsonify(post.get_tags())
+    else:
+        if name in post.get_tags():
+            return jsonify(post.get_tag(name))
+        else:
+            return redirect(url_for('api.api_tag', name='all'))

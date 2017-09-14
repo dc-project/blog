@@ -44,3 +44,5 @@ class Config(object):
     FLATPAGES_ROOT = 'posts'
     FLATPAGES_EXTENSION = '.md'
     FLATPAGES_AUTO_RELOAD = True
+
+    DEBUG_TB_INTERCEPT_REDIRECTS = False

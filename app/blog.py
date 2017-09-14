@@ -42,26 +42,16 @@ class Post(object):
         return recent_post
 
     def get_tags(self):
-        posts = self.get_posts_list()
-        allkey = []
-        xkey = {}
-        path = '{}/{}'.format(self.post_dir, '')
-        for post in posts:
-            allkey.append(post['tags'])
-        for i in allkey:
-            if type(i) is list:
-                for j in i:
-                    j = j.lower()
-                    xkey[j] = xkey.get(j, 0) + 1
-            elif type(i) is str:
-                for j in i.split():
-                    j = j.lower()
-                    xkey[j] = xkey.get(j, 0) + 1
-            else:
-                i = i.lower()
-                xkey[i] = xkey.get(i, 0) + 1
+        """
 
-        return xkey
+        :return: all tag info
+        """
+        dkey = {}
+        for post in self.get_posts_list():
+            for i in post.__getitem__('tags').strip().split():
+                dkey.setdefault(i.lower(), 0)
+                dkey[i.lower()] += 1
+        return dkey
 
     def get_tag(self, tag):
         """
@@ -70,11 +60,12 @@ class Post(object):
         """
 
         tag = tag.lower()
-        taginfo = {}
-        taginfo['tag_num'] = self.get_tag()['tag']
+        tag_info = []
         for post in self.get_posts_list():
-            if tag in post.tags.lower():
-                pass
-        return jsonify(taginfo)
+            for itag in post.__getitem__('tags').strip().split():
+                if itag == tag:
+                    tag_info.append(post.path)
+        print(tag_info)
+        return {tag: tag_info}
 
 

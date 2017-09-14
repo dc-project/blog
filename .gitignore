@@ -41,3 +41,5 @@ app/content/
 app/logs/
 app/plugins/
 test/
+
+app/posts/
