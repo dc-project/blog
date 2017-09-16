@@ -23,7 +23,9 @@ post = Post('.md', 'posts')
 
 @api.route('/api/v1')
 def api_index():
-    return 'api index'
+    return '''
+    <html><head><title>API</title></head><body>api index</body></html>
+    '''
 
 
 @api.route('/api/v1/post/<name>')
