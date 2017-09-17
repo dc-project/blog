@@ -46,3 +46,10 @@ class Config(object):
     FLATPAGES_AUTO_RELOAD = True
 
     DEBUG_TB_INTERCEPT_REDIRECTS = False
+
+
+class blog(object):
+    """
+    blog 基础设定
+    """
+

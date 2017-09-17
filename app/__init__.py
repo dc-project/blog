@@ -35,7 +35,7 @@ class BlogTheme(FileSystemLoader):
             template = "/".join(['default', 'templates', template])
             return super(BlogTheme, self).get_source(environment, template)
 
-        theme = utils.get_config('blog_theme') if utils.get_config('blog_theme') else 'default'
+        theme = utils.get_config('blog_theme') if utils.get_config('blog_theme') else 'light'
         template = "/".join([theme, 'templates', template])
         return super(BlogTheme, self).get_source(environment, template)
 
