@@ -1,0 +1,38 @@
+{% block add_js %}
+    <!--add_js_666-->
+    <script>
+        $.ajax({
+            type: "get",
+            dateType: "json",
+            url: "/api/v1/post/recent",
+            async: false,
+            complete: function () {
+                $("#load").hide();
+            },
+            /*success: function (msg) {
+                $.each(msg,function (i,n) {
+                    $("#writing ul").append(
+                       '<li class="post-item"><div class="meta">' +
+                        '<time datetime="'+ n.date +'" itemprop="datePublished">'+ n.date.substr(5,12) +'</time></div>'
+                        +  '<span><a class="" href="#'+ msg[i] +'">' + n.title + '</a></span></li>'
+                    );
+                })
+            },*/
+            success: function (res) {
+                var msg = JSON.parse(res);
+                $.each(msg,function (key, val) {
+                    $("#writing ul").append(
+                        '<li class="post-item"><div class="meta">' +
+                        '<time datetime="'+ val.date +'" itemprop="datePublished">'     // n 是什么？
+                        + n.date.substr(5,12) +'</time></div>'
+                        +  '<span><a class="" href="#'+  val.date // 这里就是每个的 date
+                        + '">' + val.title + '</a></span></li>'
+                    );
+                })
+            },
+            error: function () {
+                alert("ERROR");
+            }
+        });
+    </script>
+{% endblock %}

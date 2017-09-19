@@ -16,42 +16,15 @@
         {% include "_layouts/header.html" %}
         {% block main %}
             {% include "_includes/saying.html" %}
-
-<section id="writing">
-  <span class="h1"><a href="/archives">Writing</a></span>
-  <ul class="post-list">
-
-
-
-
-      <li class="post-item">
-
-    <div class="meta">
-        <time datetime="2017-05-18T21:51:42.420Z" itemprop="datePublished">2017-05-18</time>
-    </div>
-
-
-        <span>
-
-        <a class="" href="/hello-world/">Coming soon</a>
-
-
-
-</span>
-      </li>
-
-  </ul>
-
-</section>
-
-
-
-    </div>
+             {% include "_includes/post.html" %}
         {% endblock %}
+    </div>
+
         {% include "_layouts/footer.html" %}
 
-    </div>
+
     {% include "_includes/js.html" %}
+    {% include "_includes/ex_js.html" %}
 </body>
 </html>
 
