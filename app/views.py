@@ -22,6 +22,11 @@ def home(path=None):
     return render_template('home.html')
 
 
-@views.route('/test')
-def test():
-    return render_template('test/test.html')
+@views.route('/about/')
+def about():
+    return render_template('about.html')
+
+
+@views.route('/mirrors/')
+def mirrors():
+    return render_template('mirrors.html')

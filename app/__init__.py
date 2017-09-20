@@ -72,7 +72,9 @@ def create_app(config='app.config.Config'):
 
         from app.views import views
         from app.api import api
+        from app.dash import dash
         app.register_blueprint(views)
         app.register_blueprint(api)
+        app.register_blueprint(dash)
 
         return app
