@@ -31,7 +31,7 @@ def api_index():
 @api.route('/api/v1/post/<name>')
 def api_post(name):
     if name == 'all':
-        return jsonify({key.path: {key.meta, key.path} for key in post.get_posts_list()})
+        return jsonify({key.path: [key.meta, key.path] for key in post.get_posts_list()})
     elif name == 'recent':
         return jsonify({key.path: [key.meta, key.path] for key in post.recent_post()})
     else:
