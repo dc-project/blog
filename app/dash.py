@@ -9,7 +9,7 @@
 """
 
 from flask import Blueprint, render_template,jsonify
-from app.plugins.docker import DockerApi
+from app.plugins.dockerapi import DockerApi
 
 dash = Blueprint('dash', __name__)
 
