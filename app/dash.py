@@ -13,7 +13,7 @@ from app.plugins.dockerapi import DockerApi
 
 dash = Blueprint('dash', __name__)
 
-docker = DockerApi(host=None, timeout=None)
+docker = DockerApi(host="47.93.4.160:2376", timeout=None)
 
 
 @dash.route('/dash/')

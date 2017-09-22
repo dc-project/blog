@@ -11,14 +11,20 @@
 import re
 import os
 import json
+import logging
+import time
+import requests
 
 from flask import current_app as app, render_template, request, url_for, redirect, Blueprint, jsonify
+from datetime import datetime
 
 from app.blog import Post
 
 api = Blueprint('api', __name__)
 
 post = Post('.md', 'posts')
+
+logger = logging.getLogger('api')
 
 
 @api.route('/api/v1')
@@ -33,6 +39,7 @@ def api_post(name):
     if name == 'all':
         return jsonify({key.path: [key.meta, key.path] for key in post.get_posts_list()})
     elif name == 'recent':
+        logger.info("{0} {1} {2}".format(time.strftime("%Y-%m-%d %X"), request.remote_addr, request.user_agent))
         return jsonify({key.path: [key.meta, key.path] for key in post.recent_post()})
     else:
         return redirect(url_for('api.api_index'))

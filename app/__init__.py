@@ -66,6 +66,7 @@ def create_app(config='app.config.Config'):
 
         app.db = db
 
+        utils.init_logs(app)
         utils.init_errors(app)
 
         Debugtool = DebugToolbarExtension(app)
