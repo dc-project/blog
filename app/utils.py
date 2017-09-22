@@ -41,12 +41,12 @@ def init_logs(app):
         os.makedirs(log_dir)
 
     logs = [
-        os.path.join(parent,'logs','log_api.log')
+        os.path.join(parent, 'logs', 'log_api.log')
     ]
 
     for log in logs:
         if not os.path.exists(log):
-            open(log,'a').close()
+            open(log, 'a').close()
 
     api_log = logging.handlers.RotatingFileHandler(os.path.join(parent, 'logs', 'log_api.log'), maxBytes=10000)
 

@@ -13,7 +13,6 @@ import os
 import json
 import logging
 import time
-import requests
 
 from flask import current_app as app, render_template, request, url_for, redirect, Blueprint, jsonify
 from datetime import datetime
@@ -54,3 +53,11 @@ def api_tag(name):
             return jsonify(post.get_tag(name))
         else:
             return redirect(url_for('api.api_tag', name='all'))
+
+
+@api.route('/api/misc/<name>')
+def api_dl(name):
+    if name == 'log':
+        log_path = os.path.join(os.path.dirname(__file__), 'logs')
+        return jsonify([(file, ''.join(i)+''.join(j)+'/'+ii) for i, j, file in os.walk(log_path) for ii in file])
+    return name
