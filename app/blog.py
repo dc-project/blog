@@ -10,7 +10,7 @@
 
 from flask_frozen import Freezer
 from flask_flatpages import FlatPages
-from flask import current_app as app, jsonify
+from flask import current_app as app
 
 
 flatpages = FlatPages(app)
@@ -67,5 +67,16 @@ class Post(object):
                     tag_info.append(post.path)
         print(tag_info)
         return {tag: tag_info}
+
+    def get_post_info(self, postname):
+        path = '{}/{}{}'.format(self.post_dir, postname, self.ext)
+        print(path)
+        post = flatpages.get_or_404(path)
+        print(post)
+        postindex = self.get_posts_list().index(post)
+        postpre = None if postindex == 0 else self.get_posts_list()[postindex - 1]
+        postnex = None if postindex == len(self.get_posts_list()) -1 else self.get_posts_list()[postindex + 1]
+        post_info = {'post': post, 'postpre': postpre, 'postnex': postnex}
+        return post_info
 
 

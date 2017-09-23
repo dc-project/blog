@@ -12,16 +12,18 @@ from flask import Blueprint, render_template
 
 from app.blog import Post
 
-post = Post('.md', 'posts')
+sp = Post('.md', 'posts')
 
 post = Blueprint('post', __name__)
 
 
 @post.route('/posts/')
 def list_all():
-    return render_template('post.html')
+    return render_template('posts.html')
 
 
 @post.route('/post/<name>')
 def show_post(name):
-    return name
+    print(sp.get_post_info(name))
+
+    return render_template('post.html',post='111')

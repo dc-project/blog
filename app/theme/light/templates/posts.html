@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}All Post{% endblock %}
+{% block main %}
+        <section id="about">...</section>
+        <section id="writing">
+          <span class="h1"><a href="/posts">All Posts</a></span>
+            <ul class="post-list">
+            </ul>
+        </section>
+{% endblock %}
+{% block add_js %}
+    <script type="text/javascript">
+            $.ajax({
+                type: "get", //post
+                //data: {'type': window.location.pathname},
+                dateType: "json",
+                url: "{{ url_for('api.post_api', post='all') }}",
+                //async: false,
+                complete: function () {
+                    $("#load").hide();
+                },
+                success: function (msg) {
+                    $.each(msg,function (i,n) {
+                        $("#writing ul").append(
+                           '<li class="post-item"><div class="meta">' +
+                            '<time datetime="'+ n[0].date +'" itemprop="datePublished">'+ n[0].date.substr(5,12) +'</time></div>'
+                            +  '<span><a class="" href="/post/'+ n[1] +'">' + n[0].title + '</a></span></li>'
+                        );
+                    })
+                },
+                //success: function () {
+                //   console.log(window.location.hostname+window.location.pathname+window.location.search);
+                //},
+                error: function () {
+                    alert("ERROR");
+                }
+            });
+    </script>
+{% endblock %}
