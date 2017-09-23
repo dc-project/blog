@@ -15,7 +15,7 @@ import logging.handlers
 import six
 
 from flask import current_app as app, render_template
-from flask_cache import Cache
+from flask_cache import Cache, make_template_fragment_key
 from flask_migrate import Migrate
 
 

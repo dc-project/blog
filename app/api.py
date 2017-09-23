@@ -18,6 +18,7 @@ from flask import current_app as app, render_template, request, url_for, redirec
 from datetime import datetime
 
 from app.blog import Post
+from app.utils import cache
 
 api = Blueprint('api', __name__)
 
