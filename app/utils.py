@@ -55,7 +55,6 @@ def init_logs(app):
     log_api.propagate = 0
 
 
-
 def init_errors(app):
     @app.errorhandler(404)
     def page_not_found(error):
@@ -79,6 +78,7 @@ def override_template(template, html):
         app.jinja_loader.overriden_templates[template] = html
 
 
+@cache.memoize()
 def get_config(key):
     with app.app_context():
         value = app.config.get(key)

@@ -66,6 +66,9 @@ def create_app(config='app.config.Config'):
 
         app.db = db
 
+        utils.cache.init_app(app)
+        app.cache = utils.cache
+
         utils.init_logs(app)
         utils.init_errors(app)
 

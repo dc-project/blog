@@ -47,6 +47,15 @@ class Config(object):
 
     DEBUG_TB_INTERCEPT_REDIRECTS = False
 
+    '''
+    Cache
+    '''
+    CACHE_REDIS_URL = os.environ.get('REDIS_URL')
+    if CACHE_REDIS_URL:
+        CACHE_TYPE = 'redis'
+    else:
+        CACHE_TYPE = 'simple'
+
 
 class blog(object):
     """
