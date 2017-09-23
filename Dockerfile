@@ -24,7 +24,7 @@ WORKDIR /data/blog
 
 RUN python3.6 -m pip install -r requirements.txt
 
-VOLUME /data/blog/
+VOLUME /data/blog/app/posts
 
 EXPOSE 9090
 
