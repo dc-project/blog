@@ -1,10 +1,10 @@
-{% block add_js %}
-    <!--add_js_666-->
+
+
     <script>
         $.ajax({
             type: "get",
             dateType: "json",
-            url: "/api/v1/post/recent",
+            url: "{{ url_for('api.post_api', post='recent') }}",
             //async: false,
             complete: function () {
                 $("#load").hide();
@@ -23,4 +23,3 @@
             }
         });
     </script>
-{% endblock %}

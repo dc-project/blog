@@ -19,7 +19,7 @@ post = Blueprint('post', __name__)
 
 @post.route('/posts/')
 def list_all():
-    return render_template('')
+    return render_template('post.html')
 
 
 @post.route('/post/<name>')
