@@ -6,5 +6,7 @@ app/blog.db
 intro/
 test/%
 
+.blog_key
+
 
 app/logs/*.log
