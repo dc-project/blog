@@ -14,7 +14,7 @@ ADD sid.list  /etc/apt/sources.list
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update; \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        python3.6 python3.6-apt  python3-pip python3.6-dev  build-essential apt-utils gcc;\
+        python3.6 python3.6-apt  python3-pip python3.6-dev  build-essential apt-utils libffi-dev gcc;\
     rm -rf /var/lib/apt/lists/*
 
 
