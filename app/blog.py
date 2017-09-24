@@ -58,7 +58,8 @@ class Post(object):
         :param tag:
         :return: tag相关的文章列表
         """
-
+        if isinstance(tag, int):
+            tag = str(tag)
         tag = tag.lower()
         tags = {}
         for post in self.get_posts_list():
