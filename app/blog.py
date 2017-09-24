@@ -60,13 +60,12 @@ class Post(object):
         """
 
         tag = tag.lower()
-        tag_info = []
+        tags = {}
         for post in self.get_posts_list():
             for itag in post.__getitem__('tags').strip().split():
                 if itag == tag:
-                    tag_info.append(post.path)
-        print(tag_info)
-        return {tag: tag_info}
+                    tags[post.path] = {'title': post.__getitem__('title'), 'date': post.__getitem__('date'), 'blog': post.path}
+        return tags
 
     def get_post_info(self, postname):
         post = flatpages.get_or_404(postname)

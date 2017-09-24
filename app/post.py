@@ -36,4 +36,5 @@ def show_post(name):
 
 @post.route('/tag/<tag>')
 def show_tag(tag):
-    render_template('tag.html', name=tag)
+    print(tag)
+    return render_template('tag.html', tag=tag)

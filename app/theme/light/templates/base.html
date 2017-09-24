@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{% block desc %}Blog System{% endblock %}">
     <title>{% block title %}Hello,Blog{% endblock %}</title>
+    {% block meta_info %}
+    {% endblock %}
     {% include "_includes/meta.html" %}
     {% include "_includes/css.html" %}
     {% block add_css %}
