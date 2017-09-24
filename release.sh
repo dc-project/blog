@@ -37,7 +37,7 @@ function push(){
 }
 
 function test(){
-    docker run -itd --name blog -p 9090:9090 $image_name:$release_version-$buildRelease-$git_commit
+    docker run -itd --name blog -p 9090:9090 --network host $image_name:$release_version-$buildRelease-$git_commit
 }
 
 case $action in
@@ -48,6 +48,9 @@ case $action in
     test)
         prepare
         build
+        test
+    ;;
+    local_test)
         test
     ;;
     push)
