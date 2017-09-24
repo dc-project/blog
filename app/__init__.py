@@ -69,6 +69,8 @@ def create_app(config='app.config.Config'):
         utils.cache.init_app(app)
         app.cache = utils.cache
 
+        utils.misaka.init_app(app)
+
         utils.init_logs(app)
         utils.init_errors(app)
 

@@ -69,10 +69,7 @@ class Post(object):
         return {tag: tag_info}
 
     def get_post_info(self, postname):
-        path = '{}/{}{}'.format(self.post_dir, postname, self.ext)
-        print(path)
-        post = flatpages.get_or_404(path)
-        print(post)
+        post = flatpages.get_or_404(postname)
         postindex = self.get_posts_list().index(post)
         postpre = None if postindex == 0 else self.get_posts_list()[postindex - 1]
         postnex = None if postindex == len(self.get_posts_list()) -1 else self.get_posts_list()[postindex + 1]

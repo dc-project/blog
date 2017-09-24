@@ -40,7 +40,7 @@ class Config(object):
     SESSION_COOKIE_HTTPONLY = True
     PERMANENT_SESSION_LIFETIME = 604800
 
-    FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'headerid']
+    #FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'headerid']
     FLATPAGES_ROOT = 'posts'
     FLATPAGES_EXTENSION = '.md'
     FLATPAGES_AUTO_RELOAD = True
@@ -57,8 +57,9 @@ class Config(object):
         CACHE_TYPE = 'simple'
 
 
-class blog(object):
+class BlogConfig(object):
     """
     blog 基础设定
     """
+    BASE_URL = 'debug.ysicing.net'
 

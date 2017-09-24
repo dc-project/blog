@@ -11,10 +11,16 @@
 from flask import Blueprint, render_template
 
 from app.blog import Post
+from app.config import BlogConfig
 
 sp = Post('.md', 'posts')
 
 post = Blueprint('post', __name__)
+
+
+@post.context_processor
+def site_url():
+    return dict(BASE_URL=BlogConfig.BASE_URL)
 
 
 @post.route('/posts/')
@@ -24,6 +30,10 @@ def list_all():
 
 @post.route('/post/<name>')
 def show_post(name):
-    print(sp.get_post_info(name))
+    spost = sp.get_post_info(name)
+    return render_template('post.html', post=spost)
 
-    return render_template('post.html',post='111')
+
+@post.route('/tag/<tag>')
+def show_tag(tag):
+    render_template('tag.html', name=tag)

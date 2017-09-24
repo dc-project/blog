@@ -1,1 +1,51 @@
-{{ post }}
+{% extends "base.html" %}
+{% block title %}
+{{ post.post.title }}
+{% endblock %}
+
+{% block add_css %}
+    <link rel="stylesheet" href="{{ request.script_root }}/static/css/light/default.css">
+{% endblock %}
+{% block is_post %}
+    {% include "_includes/actions_desktop.html" %}
+{% endblock %}
+{% block header %}
+{% endblock %}
+
+{% block main %}
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+      <h1 class="posttitle" itemprop="name headline">{{ post.post.title }}</h1>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">{{ post.post.author }}</span>
+      </span>
+      <div class="postdate">
+        <time datetime="{{ post.post.date }}" itemprop="datePublished">{{ post.post.date }}</time>
+      </div>
+        <div class="article-tag">
+            <i class="fa fa-tag"></i>
+          {% for itag in post.post.tags.split() %}
+                <a href="{{ url_for('post.show_tag',tag=itag) }}">
+                    <strong>{{ itag }} </strong>
+                </a>
+          {% endfor %}
+        </div>
+    </div>
+  </header>
+  <div class="content" itemprop="articleBody">
+
+    {{ post.post.html | markdown }}
+
+  </div>
+</article>
+{% include "_plugins/comments.html" %}
+{% endblock %}
+{% block is_post_2 %}
+    {% include "_includes/actions_mobile.html" %}
+{% endblock %}
+{% block add_js %}
+    <!--
+        <script src="{{ request.script_root }}/static/js/light/prism.js"></script>
+        -->
+{% endblock %}

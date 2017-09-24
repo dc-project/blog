@@ -9,23 +9,28 @@
     <title>{% block title %}Hello,Blog{% endblock %}</title>
     {% include "_includes/meta.html" %}
     {% include "_includes/css.html" %}
+    {% block add_css %}
+    <!-- -->
+    {% endblock %}
 </head>
 
 <body>
+    {% block is_post %}{% endblock %}
     <div class="content index width mx-auto px2 my4">
+        {% block header %}
         {% include "_layouts/header.html" %}
+        {% endblock %}
         {% block main %}
             {% include "_includes/saying.html" %}
             {% include "_includes/recent.html" %}
         {% endblock %}
     </div>
-
+        {% block is_post_2 %}{% endblock %}
         {% include "_layouts/footer.html" %}
 
 
     {% include "_includes/js.html" %}
     {% block add_js %}
-        {% include "_includes/ex_js.html" %}
     {% endblock %}
 </body>
 </html>
