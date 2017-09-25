@@ -29,15 +29,15 @@ function prepare() {
 }
 
 function build(){
-    docker build --no-cache -t $image_name:$release_version-$buildRelease-$git_commit .
+    docker build --no-cache -t $image_name:$release_version-$buildRelease .
 }
 
 function push(){
-    docker push $image_name:$release_version-$buildRelease-$git_commit
+    docker push $image_name:$release_version-$buildRelease
 }
 
 function test(){
-    docker run -itd --name blog -p 9090:9090 --network host $image_name:$release_version-$buildRelease-$git_commit
+    docker run -itd --name blog -p 9090:9090 --network host $image_name:$release_version-$buildRelease
 }
 
 case $action in
