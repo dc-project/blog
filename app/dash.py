@@ -10,6 +10,7 @@
 
 from flask import Blueprint, render_template,jsonify
 from app.plugins.dockerapi import DockerApi
+from app.plugins.monitor import Monitor
 
 dash = Blueprint('dash', __name__)
 
@@ -24,3 +25,7 @@ def dash_index():
 @dash.route('/dash/docker')
 def dash_docker_info():
     return jsonify(docker.get_docker_version())
+
+@dash.route('/dash/monitor')
+def dash_monitor():
+    return jsonify(Monitor.logging_user_info())

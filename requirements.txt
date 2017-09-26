@@ -22,6 +22,7 @@ Mako==1.0.7
 Markdown==2.6.9
 MarkupSafe==1.0
 misaka==2.1.0
+psutil==5.3.1
 pycparser==2.18
 Pygments==2.2.0
 python-dateutil==2.6.1
