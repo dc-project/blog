@@ -14,7 +14,7 @@ from app.plugins.monitor import Monitor
 
 dash = Blueprint('dash', __name__)
 
-docker = DockerApi(host="47.93.4.160:2376", timeout=None)
+docker = DockerApi(host="127.0.0.1:2376", timeout=None)
 
 
 @dash.route('/dash/')
