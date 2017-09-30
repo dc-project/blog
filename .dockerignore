@@ -5,7 +5,7 @@ _mdwriter.cson
 app/blog.db
 intro/
 test/%
-
+VERSION
 .blog_key
 
 

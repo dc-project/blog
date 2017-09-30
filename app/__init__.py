@@ -73,6 +73,8 @@ def create_app(config='app.config.Config'):
 
         utils.init_logs(app)
         utils.init_errors(app)
+        utils.init_utils(app)
+
 
         Debugtool = DebugToolbarExtension(app)
 

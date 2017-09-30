@@ -8,10 +8,7 @@
 @time: 2017/9/9 13:10
 """
 
-import re
-import os
-
-from flask import current_app as app, render_template, request, redirect, Blueprint, jsonify
+from flask import render_template,  Blueprint
 
 views = Blueprint('views', __name__)
 
@@ -19,7 +16,7 @@ views = Blueprint('views', __name__)
 @views.route('/')
 @views.route('/<any(index,home):path>')
 def home(path=None):
-    return render_template('home.html')
+    return render_template('home.html', path=path)
 
 
 @views.route('/about/')

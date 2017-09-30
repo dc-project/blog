@@ -13,18 +13,22 @@ import sys
 import logging
 import logging.handlers
 import six
+import subprocess
 
 
 from flask import current_app as app, render_template
+from jinja2 import filters
 from flask_cache import Cache
 from flask_migrate import Migrate
 from flask_misaka import Misaka
 
 from app.models import db, Config
+from app.config import BlogConfig
 
 cache = Cache()
 migrate = Migrate()
 misaka = Misaka()
+
 
 def init_logs(app):
     log_api = logging.getLogger('api')
@@ -73,6 +77,10 @@ def init_errors(app):
         return render_template('_error/502.html'), 502
 
 
+def init_utils(app):
+    app.jinja_env.globals.update(blog_version=blog_version)
+
+
 def override_template(template, html):
     with app.app_context():
         app.jinja_loader.overriden_templates[template] = html
@@ -119,3 +127,31 @@ def set_config(key, value):
         db.session.add(config)
     db.session.commit()
     return config
+
+
+def is_setup():
+    setup = Config.query.filter_by(key='setup').first()
+    if setup:
+        return setup.value
+    else:
+        return False
+
+
+def blog_setting(key):
+    value = get_config(key)
+    return value if value else BlogConfig(key)  # need fixed
+
+
+@cache.memoize()
+def blog_version():
+    path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+    vpath = path+'/VERSION'
+    try:
+        version = subprocess.run("git describe --tag|sed 's/^v//'", stdout=subprocess.PIPE, shell=True).stdout.strip()
+        version = str(version, encoding='utf-8')
+        with open(vpath, 'w') as f:
+            f.write(version)
+    except:
+        with open(vpath, 'r') as f:
+            version = f.readline().strip()
+    return version
