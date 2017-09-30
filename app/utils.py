@@ -152,6 +152,9 @@ def blog_version():
         with open(vpath, 'w') as f:
             f.write(version)
     except:
-        with open(vpath, 'r') as f:
-            version = f.readline().strip()
+        if os.path.exists(vpath):
+            with open(vpath, 'r') as f:
+                version = f.readline().strip()
+        else:
+            version = 'dev'
     return version
