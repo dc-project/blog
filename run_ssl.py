@@ -10,9 +10,9 @@
 
 from app import create_app
 import ssl
-import os
+
 app = create_app()
 
 ctx = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
-ctx.load_cert_chain("ssl/dev.pem","ssl/dev.key")
-app.run(host='0.0.0.0',port=9090,debug=app.debug, threaded=True,ssl_context=ctx)
+ctx.load_cert_chain("ssl/dev.pem", "ssl/dev.key")
+app.run(host='0.0.0.0', port=9090, debug=app.debug, threaded=True, ssl_context=ctx)
