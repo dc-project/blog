@@ -2,7 +2,9 @@
 
 set -xe
 
-[ -d "/data/project" ] || mkdir -p /data/project/blog_env
+[ -d "/data/project/" ] && (
+    rm /data/project/blog_env
+) || mkdir -p /data/project/blog_env
 
 pip3 install virtualenv
 
