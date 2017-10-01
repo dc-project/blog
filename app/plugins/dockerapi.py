@@ -18,5 +18,25 @@ class DockerApi(object):
         self.timeout = timeout
         self.client = docker.DockerClient(base_url=self.host)
 
-    def get_docker_version(self):
+
+class BaseDocker(DockerApi):
+
+    def docker_info(self):
         return self.client.info()
+
+    def docker_version(self):
+        return self.client.version()
+
+    def docker_images(self, listimages=False, num=True):
+        images = self.client.images.list()
+        images_dict = {}
+        for image in images:
+            images_dict[image.short_id] = {'tag': image.tags[0], 'id': image.id}
+        if num and not listimages:
+            return len(images)
+        elif listimages and not num:
+            return images_dict
+        else:
+            images_dict['total'] = len(images)
+            return images_dict
+
