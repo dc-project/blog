@@ -1,7 +1,7 @@
 all: build
 
 build:
-	@docker build --tag=blog:dev .
+	@docker build --tag=projectdc/blog:dev .
 
 release: build
-	@docker build --tag=ysicing/blog:$(shell cat VERSION) .
+	@docker build --tag=projectdc/blog:$(shell cat VERSION) .
