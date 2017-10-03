@@ -8,7 +8,7 @@
 
 参考 [release](./release.sh) & [Makefile](./Makefile)
 
-## 1o月 Todo list
+## 10月 Todo list
 
 - 支持k8s api
 - 支持etcd
