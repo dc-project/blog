@@ -27,7 +27,7 @@ Mako==1.0.7
 Markdown==2.6.9
 MarkupSafe==1.0
 misaka==2.1.0
-psutil==5.3.1
+psutil==5.6.6
 pyasn1==0.3.6
 pyasn1-modules==0.1.4
 pycparser==2.18
